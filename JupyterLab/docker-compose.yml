@@ -1,8 +1,9 @@
 version: '3.7'
 services:
   jupyterlab:
-    # これだとJupyterのimageしか使えないのでDockerfileに移す
+    # これだとJupyterのimageしか使えない
     # image: jupyter/datascience-notebook:latest
+    # そのためDockerfileで合成したものを利用する
     build: ./docker/jupyterlab
     user: root
     environment:
@@ -10,7 +11,7 @@ services:
       NB_GID: 100
       GRANT_SUDO: "yes"
     volumes:
-       - "./work:/home/jovyan"
+       - "./work:/home/jovyan/work"
     privileged: true
     ports:
       - "8888:8888"
