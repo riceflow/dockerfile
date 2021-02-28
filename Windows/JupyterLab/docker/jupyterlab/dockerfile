@@ -26,8 +26,18 @@ RUN python -m pip install --upgrade pip && pip install \
     requests \
     pyperclip \
     beautifulsoup4 \
+    jupyterlab \
     jupyterlab_code_formatter \
-    jupyterlab
+    ipywidgets \
+    plotly \
+    dash \
+    dash-daq \
+    dash-bio \
+    dash-canvas \
+    dash-auth \
+    dash-cytoscape \
+    jupyter-dash \
+    xlrd
 
 # JavaScriptを追加
 RUN npm install -g ijavascript
@@ -35,6 +45,7 @@ RUN ijsinstall
 
 # 必要なJupyterLab Extensionを記載
 RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter
+RUN jupyter labextension install jupyterlab-plotly
 # RUN jupyter labextension install jupyterlab_vim
 # RUN jupyter labextension install jupyterlab-drawio
 # RUN jupyter labextension install jupyterlab_tensorboard
