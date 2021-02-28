@@ -6,6 +6,7 @@ services:
     volumes:
 #     - sharedir:/home/jovyan/work
         - C:\source\snippet\python:/home/JupyterLab/codes
+        - C:\temp:/usr/src/app
     ports:
       - "18888:8888"
     environment:

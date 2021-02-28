@@ -29,9 +29,19 @@ RUN python -m pip install --upgrade pip && pip install \
     jupyterlab_code_formatter \
     jupyterlab
 
+# JavaScriptを追加
+RUN npm install -g ijavascript
+RUN ijsinstall
+
 # 必要なJupyterLab Extensionを記載
 RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter
+# RUN jupyter labextension install jupyterlab_vim
+# RUN jupyter labextension install jupyterlab-drawio
+# RUN jupyter labextension install jupyterlab_tensorboard
 
 RUN jupyter serverextension enable --py jupyterlab
 RUN jupyter serverextension enable --py jupyterlab_code_formatter
+# RUN jupyter serverextension enable --py jupyterlab_vim
+# RUN jupyter serverextension enable --py jupyterlab-drawio
+# RUN jupyter serverextension enable --py jupyterlab_tensorboard
 ENV DEBIAN_FRONTEND dialog
