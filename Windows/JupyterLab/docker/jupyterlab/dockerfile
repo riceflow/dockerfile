@@ -8,6 +8,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     curl && \
     apt-get clean
 
+# Jupyter Extensionのパッケージによっては必要なため
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install npm@latest -g
+
 # 必要なPythonパッケージを記載
 RUN python -m pip install --upgrade pip && pip install \ 
     numpy \
@@ -20,8 +25,13 @@ RUN python -m pip install --upgrade pip && pip install \
     mglearn \
     requests \
     pyperclip \
-    beautifulsoup4　\
+    beautifulsoup4 \
+    jupyterlab_code_formatter \
     jupyterlab
 
+# 必要なJupyterLab Extensionを記載
+RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter
+
 RUN jupyter serverextension enable --py jupyterlab
+RUN jupyter serverextension enable --py jupyterlab_code_formatter
 ENV DEBIAN_FRONTEND dialog

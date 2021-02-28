@@ -5,7 +5,7 @@ services:
     user: root
     volumes:
 #     - sharedir:/home/jovyan/work
-      - C:\volume\jupyterlab/home/jovyan/work
+        - C:\source\snippet\python:/home/JupyterLab/codes
     ports:
       - "18888:8888"
     environment:
@@ -15,11 +15,11 @@ services:
           --ip=0.0.0.0
           --allow-root
           --no-browser
-          --NotebookApp.notebook_dir='/home/JupyterLab/codes'
+          --NotebookApp.notebook_dir=/home/JupyterLab/codes
           --NotebookApp.token=password
-volumes:
-  sharedir:
-    driver_opts:
-      type: none
-      device: ./lab
-      o: bind
+# volumes:
+#   sharedir:
+#     driver_opts:
+#       type: none
+#       device: ./lab
+#       o: bind
