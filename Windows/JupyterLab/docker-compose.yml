@@ -19,7 +19,6 @@ services:
 volumes:
   sharedir:
     driver_opts:
-      o: bind
       type: none
       device: /c/volume/jupyterlab
       o: bind
