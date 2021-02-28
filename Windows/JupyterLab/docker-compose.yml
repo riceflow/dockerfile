@@ -1,0 +1,25 @@
+version: "3"
+services:
+  jupyterlab:
+    build: ./docker/jupyterlab
+    user: root
+    volumes:
+      - sharedir:/home/jovyan/work
+    ports:
+      - "18888:8888"
+    environment:
+      TZ: Asia/Tokyo
+    command: 
+      jupyter lab 
+          --ip=0.0.0.0
+          --allow-root
+          --no-browser
+          --NotebookApp.notebook_dir='/home/JupyterLab/codes'
+          --NotebookApp.token=password
+volumes:
+  sharedir:
+    driver_opts:
+      o: bind
+      type: none
+      device: /c/volume/jupyterlab
+      o: bind
