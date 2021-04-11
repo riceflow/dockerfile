@@ -1,3 +1,3 @@
-cd C:\source\dockerfile\Windows\JupyterLab
+cd %~dp0
 docker-compose up
 docker-compose down
