@@ -39,6 +39,11 @@ RUN python -m pip install --upgrade pip && pip install \
     jupyter-dash \
     xlrd
 
+# プロキシ超え(別途docker-compose側から--build-argで与えてもらう想定)
+#RUN npm config set proxy $http_proxy
+#RUN npm config set https-proxy $https_proxy
+#RUN npm config set registry https://registry.npmjs.org/
+
 # JavaScriptを追加
 RUN npm install -g ijavascript
 RUN ijsinstall
